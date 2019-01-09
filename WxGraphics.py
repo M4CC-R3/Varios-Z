@@ -8,18 +8,41 @@ print(hash("mighty"))
 
 val = input("Digite el número o palabra  a convertir a binario: ")
 
+confirmador = str.isdecimal(val) #That rectify if if it decimal
 
+trans = None
 
-confirmador = str.isdecimal(val)
+def converBinADecimal(bin):
+	finTran = 0
+	y = -1
+
+	for x in trans[::-1]:
+
+		y += 1
+
+		if x == "1":
+
+			finTran += pow(2,y)
+
+	return finTran
+
 
 if (confirmador == True):
 
-	print((bin(int(val))).replace('b',''))
+	trans = str((bin(int(val)))).replace('0b','')
 
+	print("{0} : {1}".format(trans, converBinADecimal(trans)))
+	
 else:
 
+	trans = []
+
 	for l in val:
-		print((bin(ord(l)).replace('b','')), end='')
+		trans.append(bin(ord(l)).replace('b', ''))
+
+	print(trans)
+
+#print(tuple(trans))
 """
 nmScan = nmap.PortScanner()
 nmScan.scan('216.58.222.196', '21-443')
@@ -46,4 +69,10 @@ print("\n Theren't elements common: {0}".format(Hi2.isdisjoint(Hi)))
 print("Every the element is on the set: ",Hi2.issubset(Hi))
 
 print(Hi.difference(Hi2))
+
+firDict = {"sd":53,53:"sd","HOLA":"MUNDO"}
+firDict["HOLO"] = 4
+print(firDict)
+
+
 
