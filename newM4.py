@@ -1,11 +1,23 @@
-import datetime
+from datetime import datetime
 from datetime import date
+from datetime import timedelta
 
-hoy = datetime.datetime.now()
+hoy = datetime.now()
 
-fechaNacimiento = date(1998,10,24)
+fechaNacimiento = input("Digite su fecha de nacimiento (YY-MM-DD): ")
+
+fechaNacimiento = fechaNacimiento.split("-")
+
+fechaNacimiento = date(int(fechaNacimiento[0]),int(fechaNacimiento[1]),int(fechaNacimiento[2]))
 fechaActual = date.today()
 
-print(("Su edad es de: ",int((fechaActual-fechaNacimiento).days/365)))
+restoDelta = timedelta((fechaActual-fechaNacimiento).days-396)
+final = (str(restoDelta+date(1,1,1))).split("-")
 
-print(datetime.datetime.now()-hoy)
+año = int(final[0])
+mes = int(final[1])
+dia = int(final[2])
+
+print("Su edad es de: {0} Años, {0} Meses y {0} Dias".format(año,mes,dia))
+
+print(datetime.now()-hoy)
