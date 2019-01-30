@@ -11,6 +11,88 @@ import copy
 import pprint
 from enum import Enum,unique, auto
 import numbers
+from termcolor import colored
+import math
+from fractions import Fraction
+from decimal import Decimal
+import random
+import warnings
+import math
+import itertools
+
+for diferencia in itertools.accumulate([10, 50, 100,20], lambda a, b: b-a):
+    print(diferencia, end = ' ')
+
+lista = [3,5,7]
+
+lista2 = list(map(lambda n:n ** 2, lista))
+
+print(lista2)
+
+serie1 = random.Random('p')
+serie2 = random.Random('p')
+
+for num in range(3):
+    print(serie1.random(), serie2.random())
+
+
+
+n = int(input("Ingrese un numero: "))
+lista = list(range(2, n+1))
+i = 0
+while(lista[i]*lista[i] <= n):
+    # Mientras el cuadrado del elemento actual sea menor que el ultimo elemento
+    for num in lista:
+        if num <= lista[i]:
+            # Cada iteracion del while hace que el for comience desde el primer elemento.
+            # Esto es para omitir los numeros primos ya encontrados
+            continue
+        elif num % lista[i] == 0:
+            # Si un numero es divisible entre el elemento actual del while
+            # de ser asi, entonces eliminarlo de la lista (esto altera la lista)
+            lista.remove(num)
+        else:
+            # Si no es divisible, entonces omitirlo (no hacer nada)
+            pass
+    i += 1 # Incrementa al siguiente elemento de la lista (que ha sido alterada)
+
+print (lista)
+
+for numero in range(3):
+    print(random.uniform(100, 105), end=' ')
+
+for numero in range(3):
+    print(random.random(), end=' ')
+
+regalos = ['sartén', 'jamón', 'mp4', 'muñeca', 'tv',
+           'patín', 'balón', 'reloj', 'bicicleta', 'anillo']
+
+print(random.choice(regalos))
+
+for serie in range(3):
+    print('\nserie:', serie + 1)
+    random.seed(serie)
+    for sorteo in range(5):
+        regalo = regalos[random.randint(0, 9)]
+        print('Sorteo', sorteo + 1, ':', regalo)
+
+random.seed(0)
+for sorteo in range(5):
+    regalo = regalos[random.randint(0, 9)]
+    print('Sorteo', sorteo + 1, ':', regalo)
+
+print(random.randint(0, 9))
+
+print(Fraction(355,113))
+print(Fraction(-3,7)+Fraction(2,3))
+
+print(math.fmod(1540,2120))
+print(1540%2120)
+
+print(abs(-81.4))
+
+print (colored("HOLA","green"))
+
 
 hoy = datetime.datetime.today()
 
@@ -44,15 +126,15 @@ class Color(Enum):
 print(repr(Color.BLACK.value))
 
 def movements(source, target):
-    ss = (source % 8, int(source / 8))
+    ss = (source % 8, (source % 8))
     print(ss)
-    tt = (target % 8, int(target / 8))
+    tt = (target % 8, (target % 8))
     print(tt)
     if abs(ss[0]-tt[0]) == abs(ss[1]-tt[1]):
         return 1
     return 2
 
-print(movements(4,18))
+print(movements(7,14))
 """
 list = [[41,21,54,84],8,7,4,2,3,5,49,1,3,5,7,4,54]
 
