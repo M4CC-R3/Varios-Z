@@ -1,11 +1,13 @@
-import difflib
-import sys
-l1 = ["HOLA","Mundo","mango","Fruta"]
-l2 = ["HOLA","MUNDO","mango","carnes"]
+import textwrap
 
-l1f = list(map((lambda x : x+"\n"),l1))
-l2f = list(map((lambda x : x+"\n"),l2))
+texto1 = """Antigua Roma:
+Antigua Roma (en latín, Antiqua Rōma) designa la
+entidad política unitaria surgida de la expansión de la ciudad
+de Roma, que en su época de apogeo, llegó a abarcar desde Gran
+Bretaña al desierto del Sahara y desde la península ibérica al
+Éufrates. En un principio, tras su fundación (según la
+tradición en 753 aC), Roma fue una monarquía etrusca. Más
+tarde (509 aC) fue una república latina, y en 27 aC
+se convirtió en un imperio."""
 
-comparation = difflib.unified_diff(l1f,l2f,fromfile="a.py",tofiledate="b.py")
-
-sys.stdout.writelines(comparation)
+print(textwrap.fill(texto1,width=40))
