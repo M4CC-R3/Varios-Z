@@ -1,13 +1,26 @@
-import textwrap
+import nmap
+import pprint
+import random
+import itertools
 
-texto1 = """Antigua Roma:
-Antigua Roma (en latín, Antiqua Rōma) designa la
-entidad política unitaria surgida de la expansión de la ciudad
-de Roma, que en su época de apogeo, llegó a abarcar desde Gran
-Bretaña al desierto del Sahara y desde la península ibérica al
-Éufrates. En un principio, tras su fundación (según la
-tradición en 753 aC), Roma fue una monarquía etrusca. Más
-tarde (509 aC) fue una república latina, y en 27 aC
-se convirtió en un imperio."""
+l = [47,5,7,5,6,9,7,1,2,65,84,87,59,2]
 
-print(textwrap.fill(texto1,width=40))
+
+scan = nmap.PortScanner()
+pprint.pprint(scan.scan(hosts="192.168.0.1/24",arguments="-A -T5",ports="21-443"))
+
+for x in scan.all_hosts():
+
+    print('----------------------------------------------------')
+
+    print("Host: %s \nState: %s" % (x,scan[x].state()))
+
+    for y in scan[x].all_protocols():
+
+        print("Protocolo: ", y)
+
+        lsport = scan[x][y].keys()
+
+        for z in lsport:
+
+            print("Puerto: %s\n State: %s\t Port_Name: %s" % (z,scan[x][y][z]["state"],scan[x][y][z]["name"]))
